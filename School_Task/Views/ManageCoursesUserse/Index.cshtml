@@ -1,0 +1,51 @@
+﻿@model IEnumerable<School_Task.Models.Courses>
+@{
+    ViewBag.Title = "Courses Users";
+}
+
+<h2>Courses Users</h2>
+
+<p>
+    @Html.ActionLink("Add Teacher to course ", "AddTeacherToCourse")
+    <br />
+    @Html.ActionLink("Add Student to course ", "AddStudentToCourse")
+</p>
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayName("Course Name")
+        </th>
+        <th>
+            @Html.DisplayName("Course Describtion")
+        </th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseDescription)
+            </td>
+
+            <td>
+                @Html.ActionLink("Teachers", "ShowUserse", new { id = item.Id, role = "Teacher" }) |
+                @Html.ActionLink("Students", "ShowUserse", new { id = item.Id, role = "Student" })
+            </td>
+        </tr>
+
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "AdminIndex", "School")
+</div>
+

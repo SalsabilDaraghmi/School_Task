@@ -1,0 +1,86 @@
+﻿@model IEnumerable<School_Task.ViewModels.Users>
+
+@{
+    ViewBag.Title = "TeacherCourseDetails";
+}
+
+<h2>Teacher Course Details</h2>
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Course Name")
+        </dt>
+
+        <dd>
+            @ViewBag.course.CourseName
+        </dd>
+        <dt>
+            @Html.DisplayName("Course Description")
+        </dt>
+
+        <dd>
+             @ViewBag.course.CourseDescription
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Course Length")
+        </dt>
+
+        <dd>
+            @ViewBag.course.CourseLength Monthes
+        </dd>
+
+    </dl>
+</div>
+<h3>Course Students</h3>
+<p>
+    @Html.ActionLink("Add new Student to this course", "AddNewStudent", new { id = ViewBag.course.Id})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("First Name")
+        </th>
+        <th>
+            @Html.DisplayName("Last Name")
+        </th>
+        <th>
+            @Html.DisplayName("Email")
+        </th>
+        <th>
+            @Html.DisplayName("age")
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.Role == "Student")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.age)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteStudent", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "TeacherCourseDetails", "School")
+</div>

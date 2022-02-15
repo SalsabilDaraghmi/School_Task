@@ -1,0 +1,37 @@
+﻿@model School_Task.ViewModels.Users
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete student</h2>
+
+<h3>
+    Are you sure you want to delete thisStudent from @ViewBag.course.CourseName course ?
+</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayName("Name: ")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "TeacherCourseDetails", new { id = ViewBag.course.Id })
+        </div>
+    }
+</div>

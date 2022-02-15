@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    .conta {
+        height: 50px;
+        
+    }
+
+    .center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        border: 3px solid green;
+        background-color: black;
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+</style>
+<div class="jumbotron">
+
+    <h1>Welcome to our School</h1>
+    <p class="lead"> If you are a student or a teacher and you hav an acount please login first </p>
+
+    <div class="conta">
+
+        <div class="center">
+            @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+
+        </div> 
+
+    </div>
+</div>
+

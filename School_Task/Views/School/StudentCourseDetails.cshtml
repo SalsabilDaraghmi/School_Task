@@ -1,0 +1,60 @@
+﻿@model School_Task.Models.Courses
+
+@{
+    ViewBag.Title = "StudentCourseDetails";
+}
+
+<h2>Student Course Details</h2>
+
+<div>
+    <h4>Courses</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseLength) 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseLength) Monthes
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Course Teachers")
+        </dt>
+
+        <dd>
+                @{
+                    foreach (String teacher in ViewBag.teacher)
+                    {
+                        var x = Model.CourseName;
+                        Model.CourseName = teacher;
+                @Html.DisplayFor(model => model.CourseName)
+                            Model.CourseName = x;
+                        <br/>
+                        }
+                    }
+
+        </dd>
+
+    </dl>
+</div>
+<p>
+    
+    @Html.ActionLink("Back to List", "Index")
+</p>

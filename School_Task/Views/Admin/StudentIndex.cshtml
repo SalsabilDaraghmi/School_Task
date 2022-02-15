@@ -1,0 +1,59 @@
+﻿
+@model IEnumerable<School_Task.ViewModels.Users>
+@{
+    ViewBag.Title = "Student Index";
+}
+
+<h1>Student Manager</h1>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { Role = "Student" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("First Name")
+        </th>
+        <th>
+            @Html.DisplayName("Last Name")
+        </th>
+        <th>
+            @Html.DisplayName("Email")
+        </th>
+        <th>
+            @Html.DisplayName("age")
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.Role == "Student")
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.age)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id , role = "Student" }) |
+                  @*  @Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "AdminIndex","School")
+</div>

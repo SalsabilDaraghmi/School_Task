@@ -1,0 +1,44 @@
+﻿@model School_Task.Models.UserCourse
+
+@{
+    ViewBag.Title = "Add Student To Course";
+}
+
+<h2>Add Student To Course</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+
+        <div class="form-group">
+            @Html.Label("Courses", "Course", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.CourseID,
+                                     new SelectList(ViewBag.courses, "Id", "CourseName"),
+                                     new { @class = "form-control" })
+                @Html.ValidationMessage("Courses", "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Userse", "Student", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.UserId,
+                                 new SelectList(ViewBag.userse, "Id", "Username"),
+                                 "Select Student",
+                                 new { @class = "form-control" })
+                @Html.ValidationMessage("Userse", "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

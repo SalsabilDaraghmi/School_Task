@@ -1,0 +1,31 @@
+﻿@model IEnumerable<School_Task.Models.Courses>
+
+@{
+    ViewBag.Title = "Student Index";
+}
+
+<h2>Student Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseName)
+        </td>
+      
+        <td>
+          
+            @Html.ActionLink("Details", "StudentCourseDetails", new { id=item.Id }) 
+        
+        </td>
+    </tr>
+}
+
+</table>
